@@ -7,7 +7,7 @@ load_dotenv()
 PROJECT_ID = os.getenv("PROJECT_ID")
 DATASET_NAME = os.getenv("DATASET_NAME")
 TABLE_NAME = os.getenv("TABLE_NAME")
-key_file = "/gcp/service_account.json"
+key_file = "/opt/airflow/gcp/service_account.json"
 client = bigquery.Client.from_service_account_json(key_file)
 
 def create_table(PROJECT_ID, DATASET_NAME, TABLE_NAME):
