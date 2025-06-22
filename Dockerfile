@@ -1,5 +1,5 @@
 # base image for Apache Airflow
-FROM apache/airflow:2.8.3-python3.10
+FROM apache/airflow:slim-latest-python3.10
 
 # working directory
 WORKDIR /opt/airflow
