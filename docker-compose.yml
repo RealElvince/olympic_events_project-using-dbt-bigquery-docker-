@@ -17,8 +17,8 @@ services:
       - ./data:/opt/airflow/data
       - ./gcp:/opt/airflow/gcp
       - ./buckets:/opt/airflow/buckets
-      - .tables:/opt/airflow/tables
-    
+      - ./bigquery_dataset:/opt/airflow/bigquery_dataset
+
     ports:
       - "8080:8080"
     networks:
