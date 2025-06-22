@@ -1,6 +1,6 @@
 services:
  airflow:
-    container_name: airflow
+    container_name: athletes_airflow
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,6 +24,7 @@ services:
       - "8080:8080"
     networks:
       - airflow_network 
+    command: "airflow db migrate && airflow standalone"
 networks:
   airflow_network:
     driver: bridge
