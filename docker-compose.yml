@@ -1,0 +1,28 @@
+services:
+ airflow:
+    container_name: airflow
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      AIRFLOW_LOAD_EXAMPLES: "n"
+      AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
+      AIRFLOW_CONN_GCS_DEFAULT: >-
+        google-cloud-platform://?key_path=/opt/airflow/gcp/service_account.json&project=data-engineering-458813
+    env_file:
+      - .env
+
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./data:/opt/airflow/data
+      - ./gcp:/opt/airflow/gcp
+      - ./buckets:/opt/airflow/buckets
+      - .tables:/opt/airflow/tables
+    
+    ports:
+      - "8080:8080"
+    networks:
+      - airflow_network 
+networks:
+  airflow_network:
+    driver: bridge
