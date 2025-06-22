@@ -2,7 +2,7 @@
 FROM apache/airflow:2.8.3-python3.10
 
 # working directory
-WORKDIR /opt/Airflow
+WORKDIR /opt/airflow
 
 # root user
 USER root
