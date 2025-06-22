@@ -24,7 +24,8 @@ services:
       - "8080:8080"
     networks:
       - airflow_network 
-    command: "airflow db migrate && airflow standalone"
+    command: >
+      bash -c "airflow standalone"
 networks:
   airflow_network:
     driver: bridge
