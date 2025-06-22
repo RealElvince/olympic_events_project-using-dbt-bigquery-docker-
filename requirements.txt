@@ -1,5 +1,6 @@
 google-cloud-storage
 python-dotenv
 apache-airflow-providers-google
+apache-airflow
 dbt-core
 dbt-bigquery
