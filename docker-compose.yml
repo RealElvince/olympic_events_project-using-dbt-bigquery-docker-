@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     environment:
       AIRFLOW_LOAD_EXAMPLES: "n"
-      AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
+      AIRFLOW_CORE_EXECUTOR: "SequentialExecutor"
       AIRFLOW_CONN_GCS_DEFAULT: >-
         google-cloud-platform://?key_path=/opt/airflow/gcp/service_account.json&project=data-engineering-458813
     env_file:
