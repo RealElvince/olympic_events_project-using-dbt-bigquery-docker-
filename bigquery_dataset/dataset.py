@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-key_file = "/gcp/service_account.json"
+key_file = "/opt/airflow/gcp/service_account.json"
 client = bigquery.Client.from_service_account_json(key_file)
 
 PROJECT_ID = os.getenv("PROJECT_ID")
