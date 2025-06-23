@@ -2,15 +2,17 @@ from google.cloud import bigquery
 import logging
 from google.api_core.exceptions import NotFound
 
+# Initialize BigQuery client
 key_file = "/opt/airflow/gcp/service_account.json"
 client = bigquery.Client.from_service_account_json(key_file)
 
 def create_table(project_id, dataset_name, table_name):
+    logging.info(f"Creating table '{table_name}' in dataset '{dataset_name}' under project '{project_id}'...")
+
     dataset_id = f"{project_id}.{dataset_name}"
     table_id = f"{dataset_id}.{table_name}"
 
-    logging.info(f"Creating table '{table_name}' in dataset '{dataset_name}' of project '{project_id}'...")
-
+    # Define the schema
     schema = [
         bigquery.SchemaField("ID", "INTEGER", mode="REQUIRED"),
         bigquery.SchemaField("Name", "STRING", mode="REQUIRED"),
@@ -32,15 +34,17 @@ def create_table(project_id, dataset_name, table_name):
     table = bigquery.Table(table_id, schema=schema)
 
     try:
+        # Check if the table already exists
         client.get_table(table_id)
-        logging.info(f"Table '{table_name}' already exists.")
-        return None
+        logging.info(f"Table '{table_name}' already exists in dataset '{dataset_name}'.")
+        return f"Table '{table_name}' already exists."
     except NotFound:
         try:
-            created_table = client.create_table(table)
-            logging.info(f"Table '{table_name}' created successfully.")
-            return created_table
+            client.create_table(table)
+            logging.info(f"Table '{table_name}' created successfully in dataset '{dataset_name}'.")
+            return f"Table '{table_name}' created successfully."
         except Exception as e:
-            logging.error(f"Error creating table: {e}")
-            return None
+            logging.error(f"Error creating table '{table_name}': {e}")
+            return f"Error creating table '{table_name}': {str(e)}"
+
 

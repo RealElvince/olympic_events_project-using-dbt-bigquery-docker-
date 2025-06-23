@@ -15,12 +15,12 @@ def create_dataset(project_id, dataset_name, location="US"):
     try:
         client.get_dataset(dataset_id)
         logging.info(f"Dataset '{dataset_name}' already exists.")
-        return None
+        return f"Dataset '{dataset_name}' already exists."
     except NotFound:
         try:
-            created_dataset = client.create_dataset(dataset)
+            client.create_dataset(dataset)
             logging.info(f"Dataset '{dataset_name}' created successfully.")
-            return created_dataset
+            return f"Dataset '{dataset_name}' created successfully."
         except Exception as e:
             logging.error(f"Error creating dataset: {e}")
-            return None
+            return f"Error: {str(e)}"
