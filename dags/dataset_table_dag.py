@@ -21,14 +21,6 @@ from bigquery_dataset.dataset import create_dataset
 from bigquery_dataset.table import create_table
 from buckets.gcs_bucket import create_bucket
 
-def bucket_creation():
-    create_bucket(bucket_name)
-
-def dataset_creation():
-    create_dataset(project_id,dataset_name)
-
-def table_creation():
-    create_table(project_id,dataset_name,table_name)
 
 default_args = {
     'owner': 'realelvince',
@@ -54,17 +46,20 @@ with DAG(
 
         gcs_bucket_task = PythonOperator(
             task_id='create_gcs_bucket',
-            python_callable=bucket_creation
+            python_callable=create_bucket,
+            op_kwargs={"bucket_name":bucket_name}
         )
 
         dataset_creation_task = PythonOperator(
             task_id="bigquery_dataset_creation",
-            python_callable=dataset_creation
+            python_callable=create_dataset,
+            op_kwargs={"project_id":project_id,"dataset_name":dataset_name}
         )
 
         table_creation_task = PythonOperator(
             task_id='bigquery_table_creation',
-            python_callable=table_creation
+            python_callable=create_table,
+            op_kwargs={"project_id":project_id,"dataset_name":dataset_name,"table_name":table_name}
         )
 
         gcs_bucket_task >> dataset_creation_task >> table_creation_task
