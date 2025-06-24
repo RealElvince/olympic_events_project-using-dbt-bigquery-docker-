@@ -1,0 +1,101 @@
+version: 2
+
+sources:
+  - name: olympic_dataset
+    database: data-engineering-458813
+    schema: olympic_dataset
+    description: Raw data from the Olympic Games historical dataset
+
+    tables:
+      - name: athletes
+        description: Contains details of athletes and the events they participated in
+        columns:
+          - name: ID
+            description: Unique identifier for each athlete record
+            tests:
+              - not_null
+              - unique
+
+          - name: Name
+            description: Full name of the athlete
+            tests:
+              - not_null
+
+          - name: Sex
+            description: Gender of the athlete ('M' for male, 'F' for female)
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['M', 'F']
+
+          - name: Age
+            description: Age of the athlete at the time of the event
+            tests:
+              - accepted_range:
+                  min: 10
+                  max: 100
+
+          - name: Height
+            description: Height of the athlete in centimeters
+            tests:
+              - dbt_utils.expression_is_true:
+                  expression: "Height > 0"
+
+          - name: Weight
+            description: Weight of the athlete in kilograms
+            tests:
+              - dbt_utils.expression_is_true:
+                  expression: "Weight > 0"
+
+          - name: Team
+            description: Country or team the athlete represented
+            tests:
+              - not_null
+
+          - name: NOC
+            description: National Olympic Committee 3-letter country code
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('noc_regions')
+                  field: noc
+
+          - name: Games
+            description: Edition of the Olympic Games (combines year and season)
+            tests:
+              - not_null
+
+          - name: Year
+            description: Year in which the Olympic event took place
+            tests:
+              - not_null
+            
+
+          - name: Season
+            description: Season of the Olympics (Summer or Winter)
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ['Summer', 'Winter']
+
+          - name: City
+            description: Host city where the Olympic Games were held
+            tests:
+              - not_null
+
+          - name: Sport
+            description: The broader sport category of the event
+            tests:
+              - not_null
+
+          - name: Event
+            description: The specific event the athlete competed in
+            tests:
+              - not_null
+
+          - name: Medal
+            description: Type of medal won (Gold, Silver, Bronze) or NULL if none
+            tests:
+              - accepted_values:
+                  values: ['Gold', 'Silver', 'Bronze','NA']
+
