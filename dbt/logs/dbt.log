@@ -1,0 +1,30 @@
+[0m19:32:02.269355 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe32f673e60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe32ccb2de0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe32ccb2c90>]}
+
+
+============================== 19:32:02.281634 | 5477b549-07f4-4260-9aff-168cace4cb2b ==============================
+[0m19:32:02.281634 [info ] [MainThread]: Running with dbt=1.10.2
+[0m19:32:02.283515 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/realelvo/.dbt', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt init athletes_project', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:32:02.363714 [debug] [MainThread]: Starter project path: /home/realelvo/Desktop/Projects/athlete_project/athlete_venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m19:32:02.381813 [info ] [MainThread]: 
+Your new dbt project "athletes_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m19:32:02.383652 [info ] [MainThread]: Setting up your profile.
+[0m19:35:28.266285 [info ] [MainThread]: Profile athletes_project written to /home/realelvo/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m19:35:28.275413 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 206.10057, "process_in_blocks": "439040", "process_kernel_time": 1.751422, "process_mem_max_rss": "393560", "process_out_blocks": "80", "process_user_time": 9.352196}
+[0m19:35:28.281505 [debug] [MainThread]: Command `dbt init` succeeded at 19:35:28.280263 after 206.11 seconds
+[0m19:35:28.285396 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe32ca7fc50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe32e993c50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe30bb86030>]}
+[0m19:35:28.288322 [debug] [MainThread]: Flushing usage events
+[0m19:35:29.259797 [debug] [MainThread]: An error was encountered while trying to flush usage events
