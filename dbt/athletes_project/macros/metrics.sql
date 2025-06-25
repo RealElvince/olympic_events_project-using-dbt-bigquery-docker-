@@ -53,6 +53,6 @@
 {% macro number_of_athletes_with_no_medal(source_table) %}
     SELECT
         COUNT(*) AS number_of_athletes_with_no_medals
-    FROM {{ ref(source_table) }}
+    FROM {{ source_table }}
     WHERE Medal IS NULL 
 {% endmacro %}
