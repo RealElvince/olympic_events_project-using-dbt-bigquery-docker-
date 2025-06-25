@@ -40,7 +40,7 @@
 -- Athletes with medals (Gold, Silver, Bronze)
 {% macro athlete_with_medals(source_table, medal_gold, medal_silver, medal_bronze) %}
     SELECT
-        ID AS athlete_id,
+        athlete_id,
         Name AS athlete_name,
         COUNTIF(Medal = {{ medal_gold }}) AS gold_won,
         COUNTIF(Medal = {{ medal_silver }}) AS silver_won,
