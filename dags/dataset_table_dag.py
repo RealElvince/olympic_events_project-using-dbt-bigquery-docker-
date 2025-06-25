@@ -63,3 +63,34 @@ with DAG(
         )
 
         gcs_bucket_task >> dataset_creation_task >> table_creation_task
+    
+    local_to_gcs_file_upload = LocalFilesystemToGCSOperator(
+        task_id="load_local_file_to_gcs",
+        gzipe=False,
+        gcp_conn_id='gcp_default',
+        bucket=bucket_name,
+        src="data/athlete_events_cleaned.csv",
+        dst="athletes/athletes_cleaned.csv",
+        mime_type='text/csv',
+
+    )
+
+    load_from_gcs_to_bigquery = GCSToBigQueryOperator(
+        task_id="load_file_from_gcs_to_bigquery",
+        source_objects=['athletes/athletes_cleaned.csv'],
+        destination_project_dataset_table=f"{project_id}.{dataset_name}.{table_name}",
+        skip_leading_rows=1,
+        source_format='CSV',
+        write_disposition='WRITE_TRUNCATE',
+        gcp_conn_id='gcp_default',
+        allow_jagged_rows=False,
+        autodetect=True,
+        field_delimeter=',',
+        ignore_unknown_values=True
+
+
+    )
+
+
+    # tasks dependencies
+    create_bucket_bigquery_dataset_table >> local_to_gcs_file_upload >> load_from_gcs_to_bigquery
