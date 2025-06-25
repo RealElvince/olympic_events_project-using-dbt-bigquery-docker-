@@ -1,0 +1,1 @@
+{{total_events('stg_athletes')}}

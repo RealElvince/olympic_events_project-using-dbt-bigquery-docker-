@@ -1,0 +1,23 @@
+
+version: 2
+
+models:
+  - name: stg_athletes
+    description: "A starter dbt model"
+    columns:
+      - name: Age
+        description: "Age of the athlete at the time of the event"
+        data_tests:
+          - assert_column_positive
+      
+      - name: Weight
+        description: "Weight of the athletr at the time of the event"
+        data_tests:
+          - assert_column_positive
+      
+      - name: Height
+        description: "Height of the athlete at the time of the event"
+        data_tests:
+          - assert_column_positive
+
+ 

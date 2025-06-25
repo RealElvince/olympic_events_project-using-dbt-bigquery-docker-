@@ -66,7 +66,7 @@ with DAG(
     
     local_to_gcs_file_upload = LocalFilesystemToGCSOperator(
         task_id="load_local_file_to_gcs",
-        gzipe=False,
+        gzip=False,
         gcp_conn_id='gcp_default',
         bucket=bucket_name,
         src="data/athlete_events_cleaned.csv",

@@ -18,7 +18,7 @@ services:
       - ./gcp:/opt/airflow/gcp
       - ./buckets:/opt/airflow/buckets
       - ./bigquery_dataset:/opt/airflow/bigquery_dataset
-      - ./dbt:/opt/airflow/dbt
+      - ./dbt/athletes_project:/opt/airflow/dbt
       - ./.dbt:/root/.dbt
       
 

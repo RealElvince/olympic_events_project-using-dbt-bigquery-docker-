@@ -1,0 +1,1 @@
+{{count_males('stg_athletes')}}

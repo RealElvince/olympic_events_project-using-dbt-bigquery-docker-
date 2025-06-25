@@ -1,0 +1,1 @@
+{{total_teams('stg_athletes')}}
