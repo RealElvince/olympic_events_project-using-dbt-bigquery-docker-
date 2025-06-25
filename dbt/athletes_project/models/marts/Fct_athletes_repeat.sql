@@ -5,5 +5,5 @@ SELECT
     COUNT(DISTINCT  Year) AS appearances,
     STRING_AGG(DISTINCT CAST(Year AS string), ', ') AS years_participated
 FROM {{ ref('stg_athletes') }}
-GROUP BY athlete_id, athelete_name
+GROUP BY athlete_id, athlete_name
 HAVING appearances > 1
