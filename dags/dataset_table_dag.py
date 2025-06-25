@@ -86,7 +86,7 @@ with DAG(
         gcp_conn_id='gcp_default',
         allow_jagged_rows=False,
         autodetect=True,
-        field_delimeter=',',
+        field_delimiter=',',
         ignore_unknown_values=True
 
 
