@@ -45,7 +45,7 @@
         COUNTIF(Medal = {{ medal_gold }}) AS gold_won,
         COUNTIF(Medal = {{ medal_silver }}) AS silver_won,
         COUNTIF(Medal = {{ medal_bronze }}) AS bronze_won
-    FROM {{ ref(source_table) }}
+    FROM {{ source_table }}
     GROUP BY athlete_id, athlete_name
 {% endmacro %}
 
