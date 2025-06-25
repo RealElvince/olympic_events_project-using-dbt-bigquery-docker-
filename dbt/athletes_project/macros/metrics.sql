@@ -48,3 +48,11 @@ FROM {{ source_table }}
 GROUP BY athlete_id,athlete_name
 
 {% endmacro %}
+
+--number of athletes with no medals
+{{% macro number_of_athletes_with_no_medal(source_table)%}}
+   SELECT
+      COUNT(*) AS number_of_athletes_with_no_medals
+   FROM {{source_table}}
+   WHERE Medal IS NULL 
+{{%endamcro%}}

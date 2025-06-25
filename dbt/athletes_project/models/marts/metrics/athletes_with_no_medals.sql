@@ -1,0 +1,1 @@
+{{number_of_athletes_with_no_medals('stg_athletes')}}
