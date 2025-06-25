@@ -19,7 +19,7 @@ services:
       - ./buckets:/opt/airflow/buckets
       - ./bigquery_dataset:/opt/airflow/bigquery_dataset
       - ./dbt/athletes_project:/opt/airflow/dbt
-      - ./.dbt:/root/.dbt
+      - ./.dbt:/opt/airflow/.dbt
       
 
     ports:
