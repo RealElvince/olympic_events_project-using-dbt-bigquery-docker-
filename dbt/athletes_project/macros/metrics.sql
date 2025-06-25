@@ -34,7 +34,7 @@ WHERE Sex="F"
 {% endmacro %}
 
 --number of athletes with or no medal
--- macros/athlete_with_medals.sql
+-- macros/metric.sql
 
 {% macro athlete_with_medals(source_table, medal_gold, medal_silver, medal_bronze) %}
 

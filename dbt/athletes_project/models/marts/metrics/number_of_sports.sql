@@ -1,1 +1,2 @@
-{{total_sports('stg_athletes')}}
+
+{{count_unique_sports('stg_athletes')}}

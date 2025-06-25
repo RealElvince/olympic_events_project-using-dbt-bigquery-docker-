@@ -1,1 +1,1 @@
-{{total_events('stg_athletes')}}
+{{count_unique_events('stg_athletes')}}
