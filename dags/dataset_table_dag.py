@@ -77,6 +77,7 @@ with DAG(
 
     load_from_gcs_to_bigquery = GCSToBigQueryOperator(
         task_id="load_file_from_gcs_to_bigquery",
+        bucket=bucket_name,
         source_objects=['athletes/athletes_cleaned.csv'],
         destination_project_dataset_table=f"{project_id}.{dataset_name}.{table_name}",
         skip_leading_rows=1,
